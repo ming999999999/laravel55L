@@ -9,7 +9,9 @@
 
     <div class="container">
       <div class="col-md-offset-1 col-md-10">
+
         @yield('content')
+        @include('layouts._messages')
         @include('layouts.foot')
       </div>
     </div>
