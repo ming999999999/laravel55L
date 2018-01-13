@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::resource('users','UsersController');
+
+Route::get('login','SessionsController@create')->name('login');
+
+Route::post('login','SessionsController@stroe')->name('login');
+
+Route::get('show','SessionsController@show')->name('show');
+
+Route::delete('logout','SessionsController@destory')->name('logout');
