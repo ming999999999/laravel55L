@@ -20,6 +20,13 @@ Route::get('/', 'StaticController@home')->name('home');
 Route::get('/help', 'StaticController@help')->name('help');
 Route::get('/about', 'StaticController@about')->name('about');
 
+Route::get('/login','SessionsController@create')->name('login');
+Route::post('/login','SessionsController@stroe')->name('login');
+
+Route::get('/logout','SessionsController@destory')->name('logout');
+
+
+
 Route::get('/share','StaticController@share')->name('share');
 
 Route::get('/show','StaticController@show')->name('show');

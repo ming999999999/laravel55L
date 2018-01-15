@@ -14,8 +14,6 @@ class StaticController extends Controller
 
         $data = $user->gravatar('200');
 
-        dd($data);
-
     	return view('home.home');
     }
 

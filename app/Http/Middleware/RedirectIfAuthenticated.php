@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+use Session;
+
 class RedirectIfAuthenticated
 {
     /**
@@ -18,6 +20,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+            session()->flash('info','你已登录,无需再次操作');
             return redirect('/home');
         }
 
