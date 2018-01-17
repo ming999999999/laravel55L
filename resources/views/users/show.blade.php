@@ -1,24 +1,27 @@
 @extends('layouts.default')
-@section('title', '注册')
+@section('title', '$user->name')
 
 @section('content')
 	<br><br><br><br><br><br><br><br><br>
-	<table>
-		
-		<tr>
-			<th>名字</th>
-			<th>邮箱</th>
-			<th>密码</th>
-		</tr>
-		@foreach($user as $users)
-		<tr>
-			
-			<td>{{$users->name}}</td>
-			<td>{{$users->email}}</td>
-			<td>{{$users->password}}</td>
-			
-		</tr><br>
-		@endforeach
-	</table>
+	<div class="row">
+	  <div class="col-md-offset-2 col-md-8">
+	    <div class="col-md-12">
+	        <section class="user_info">
+	          @include('shared._user_info', ['user' => $user])
+	        </section>
+	      </div>
+	    </div>
+	    <div class="col-md-12">
+	      @if (count($statuses) > 0)
+	        <ol class="statuses">
+	          @foreach ($statuses as $status)
+	            @include('statuses._status')
+	          @endforeach
+	        </ol>
+	        {!! $statuses->render() !!}
+	      @endif
+	    </div>
+	  </div>
+	</div>
 
 @stop

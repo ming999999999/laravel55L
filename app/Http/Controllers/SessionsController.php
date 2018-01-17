@@ -47,7 +47,7 @@ class SessionsController extends Controller
 
                     Auth::logout();
                     session()->flash('warning','你的账号未激活');
-                    return redirect()->route('users');
+                    return redirect()->route('users.index');
                 }
 
     	}else
@@ -63,7 +63,7 @@ class SessionsController extends Controller
 
     public function show()
     {
-
+        
     	return view('users.show');
     }
 
