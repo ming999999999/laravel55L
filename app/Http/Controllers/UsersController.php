@@ -25,6 +25,12 @@ class UsersController extends Controller
     }
     public function index()
     {
+        // $users = User::all();
+
+        // $user = $users->first();
+        //  dd($user->id);
+        // $user_id = $user->id;
+
         // $user = User::all();
         $user = User::paginate(5);
 
@@ -171,6 +177,27 @@ class UsersController extends Controller
         Auth::login($user);
         session()->flash('success','恭喜你,激活成功');
         return redirect('/users',[$user]);
+    }
+
+
+    public function followings(User $user)
+    {
+
+        $users = $user->followings()->paginate(20);
+
+        $title = '关注的人';
+
+        return view('users.show_follow',compact('users','title'));
+    }
+
+    public function followers(User $user)
+    {
+
+        $users = $user->followers()->paginate(20);
+
+        $title = "粉丝";
+
+        return view('users.show_follow',compact('users','title'));
     }
 
     
